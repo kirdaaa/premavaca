@@ -7,11 +7,31 @@
   </head>
   <body>
     <h1>Premavaca</h1>
-    <h2>Execute</h2>
-    <textarea id="input-source" form="form-execute" name="source" spellcheck="false"></textarea>
-    <form action="./execute.php" method="POST" id="form-execute">
-      <input type="submit" value="Execute">
-    </form>
-    <h2>Syntax</h2>
+    <p>Binary esoteric language dedicated to my senpai</p>
+    <section>
+      <h2>Execute</h2>
+      <textarea id="input-source" form="form-execute" name="source" spellcheck="false"></textarea>
+      <form action="./execute.php" method="POST" id="form-execute">
+        <input type="submit" value="Execute">
+      </form>
+    </section>
+    <section>
+      <h2>Documentation</h2>
+      <div class="documentation-block">
+        <h3>write</h3>
+        <h4>premavaca (000000000)</h4>
+        <p>Writes numbers to the output</p>
+      </div>
+      <div class="documentation-block">
+        <h3>write_ascii</h3>
+        <h4>premavacA (000000001)</h4>
+        <p>Writes ASCII characters to the output</p>
+      </div>
+      <div class="documentation-block">
+        <h3>mkvar</h3>
+        <h4>PREMAVACA (111111111)</h4>
+        <p>Creates variable with name as parameter #1 and value as parameter #2</p>
+      </div>
+    </section>
   </body>
 </html>
