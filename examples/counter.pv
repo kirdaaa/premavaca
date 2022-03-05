@@ -1,8 +1,8 @@
-? This program counts numbers from 0 to 1000 (not including 0 and 1000)
+? This program counts numbers from 0 to 1000 (not including 1000)
 
 [PREMAVACA] ? Create a variable that will be our counter
 premavaca   ? Unique variable ID, in this case 0
-premavacA   ? Value, in this case 0 since that's where the counter starts
+premavaca   ? Value, in this case 0 since that's where the counter starts
 
 [PREMAVACA] ? Create variable which will be the counter limit
 premavacA   ? Variable ID is 1
