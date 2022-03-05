@@ -1,0 +1,11 @@
+body {
+	font-size: 2em;
+	font-family: monospace;
+	text-align: center;
+}
+
+#input-source {
+	resize: none;
+	width: 600px;
+	height: 500px;
+}
