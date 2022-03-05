@@ -21,7 +21,7 @@ premavaca ? Unique label ID
 *premavaca  ? Write value of variable with ID 0, in this case it's the counter
 
 [premavacA] ? Write ASCII characters to the output
-premaVaCa ? `\n` (000001010)
+premaVaCa   ? `\n` (000001010)
 
 [premavaCa] ? Increase counter variable's value by 1
 premavaca   ? Variable ID
