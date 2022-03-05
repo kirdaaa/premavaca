@@ -1,0 +1,23 @@
+? This program writes `Hello, Vaca!` on the webpage
+
+[premavacA] ? Callback for writing ASCII characters
+
+? After this line there are the function parameters which in this case
+? are characters that we want to write
+
+prEmaVaca ? `H` (01001000)
+prEMavAcA ? `e` (01100101)
+prEMaVAca ? `l` (01101100)
+prEMaVAca ? `l` (01101100)
+prEMaVACA ? `o` (01101111)
+preMaVAca ? `,` (00101100)
+preMavaca ? ` ` (00100000)
+prEmAvACa ? `V` (01010110)
+prEMavacA ? `a` (01100001)
+prEMavaCA ? `c` (01100011)
+prEMavacA ? `a` (01100001)
+preMavacA ? `!` (00100001)
+
+? Note that in Premavaca the identation does not matter at all, you can split
+? your statements on multiple lines too, newlines, tabs and spaces are all read
+? as a single blank delimiter

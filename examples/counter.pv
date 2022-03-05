@@ -1,0 +1,36 @@
+? This program counts numbers from 0 to 1000 (not including 0 and 1000)
+
+[PREMAVACA] ? Create a variable that will be our counter
+premavaca   ? Unique variable ID, in this case 0
+premavacA   ? Value, in this case 0 since that's where the counter starts
+
+[PREMAVACA] ? Create variable which will be the counter limit
+premavacA   ? Variable ID is 1
+
+? Value is 1000, this is where we want to stop the counter
+? We cannot fit number 1000 into 9-byte number so we write `premavaca` twice
+? which expands the bit sequence
+premavacAPREMaVaca
+
+? Create label to which we are going to constantly be jumping to unless
+? a specific condition is met (counter hits 1000)
+[PremavacA]
+premavaca ? Unique label ID
+
+[premavaca] ? Write raw numbers to the output
+*premavaca  ? Write value of variable with ID 0, in this case it's the counter
+
+[premavacA] ? Write ASCII characters to the output
+premaVaCa ? `\n` (000001010)
+
+[premavaCa] ? Increase counter variable's value by 1
+premavaca   ? Variable ID
+premavacA   ? Increase by 1
+
+[PREmavaca] ? Goto label if parameter 2 is not equal to parameter 3
+premavaca   ? Label ID (in this case ID is 0 so go to line 13)
+*premavaca  ? Parameter 2 (value of counter)
+*premavacA  ? Parameter 3 (value of counter limit, that is 1000)
+
+? Here the program ends since goto won't jump anywhere if counter will be
+? equal to 1000
