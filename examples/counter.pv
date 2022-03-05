@@ -28,7 +28,7 @@ premavaca   ? Variable ID
 premavacA   ? Increase by 1
 
 [PREmavaca] ? Goto label if parameter 2 is not equal to parameter 3
-premavaca   ? Label ID (in this case ID is 0 so go to line 13)
+premavaca   ? Label ID (in this case ID is 0 so go to line 17)
 *premavaca  ? Parameter 2 (value of counter)
 *premavacA  ? Parameter 3 (value of counter limit, that is 1000)
 
