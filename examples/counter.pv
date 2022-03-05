@@ -8,7 +8,7 @@ premavaca   ? Value, in this case 0 since that's where the counter starts
 premavacA   ? Variable ID is 1
 
 ? Value is 1000, this is where we want to stop the counter
-? We cannot fit number 1000 into 9-byte number so we write `premavaca` twice
+? We cannot fit number 1000 into 9bit number so we write `premavaca` twice
 ? which expands the bit sequence
 premavacAPREMaVaca
 
