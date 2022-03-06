@@ -9,6 +9,7 @@ const CALLBACKS = [
     0b000000011 => 'cmd_sub',
     0b000000100 => 'cmd_mul',
     0b000000101 => 'cmd_div',
+    0b000000110 => 'cmd_mod',
     0b100000001 => 'cmd_label',
     0b100000000 => 'cmd_goto',
     0b110000000 => 'cmd_goto_eq',
@@ -236,6 +237,17 @@ class VM
         $decrement = $this->get_value($this->select_argument($state, 1));
 
         $this->variables[$name] = $this->get_variable($name) - $decrement;
+    }
+
+    private function cmd_mod(&$state)
+    {
+        $name = $this->get_value($this->select_argument($state, 0));
+        $modulo = $this->get_value($this->select_argument($state, 1));
+
+        if ($modulo === 0)
+            throw new \Exception("modulo by 0");
+
+        $this->variables[$name] = $this->get_variable($name) % $modulo;
     }
 
     private function cmd_mkvar(&$state)
