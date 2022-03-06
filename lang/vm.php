@@ -214,20 +214,20 @@ class VM
     private function cmd_mul(&$state)
     {
         $name = $this->get_value($this->select_argument($state, 0));
-        $decrement = $this->get_value($this->select_argument($state, 1));
+        $multiplier = $this->get_value($this->select_argument($state, 1));
 
-        $this->variables[$name] = $this->get_variable($name) * $decrement;
+        $this->variables[$name] = $this->get_variable($name) * $multiplier;
     }
 
     private function cmd_div(&$state)
     {
         $name = $this->get_value($this->select_argument($state, 0));
-        $increment = $this->get_value($this->select_argument($state, 1));
+        $divider = $this->get_value($this->select_argument($state, 1));
 
-        if ($increment === 0)
+        if ($divider === 0)
             throw new \Exception("division by 0");
 
-        $this->variables[$name] = $this->get_variable($name) / $increment;
+        $this->variables[$name] = $this->get_variable($name) / $divider;
     }
 
     private function cmd_sub(&$state)
