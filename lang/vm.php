@@ -56,15 +56,30 @@ class VM
     {
         $size = count($this->bytecode);
 
+        for (; $this->position < $size;) {
+            $command = $this->pop_command();
+
+            if ($command->op === OP_CCMD)
+                $this->execute_command($command, true);
+        }
+
+        $this->position = 0;
+
         for (; $this->position < $size;)
-            $this->execute_command($this->pop_command());
+            $this->execute_command($this->pop_command(), false);
     }
 
-    private function execute_command($command)
+    private function execute_command($command, $is_ctime)
     {
         switch ($command->op) {
+        case OP_CCMD:
+            if (!$is_ctime) {
+                $this->pop_arguments();
+                break;
+            }
         case OP_CMD:
             $state = new State($this->position, $this->pop_arguments());
+
             $id = $this->get_callback_id($command);
 
             if ($id === null)

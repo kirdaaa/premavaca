@@ -11,11 +11,13 @@ const TK_VALUE = 3;
 const TK_CMDBEGIN = 4;
 const TK_CMDEND = 5;
 const TK_VAR = 6;
+const TK_CTIME = 7;
 
 const SM_CMDBEGIN = '[';
 const SM_CMDEND = ']';
 const SM_VAR = '*';
 const SM_COMMENT = '?';
+const SM_CTIME = '@';
 
 class Token
 {
@@ -129,7 +131,9 @@ class Lexer
             break;
         case SM_COMMENT:
             $this->is_comment = true;
-
+            break;
+        case SM_CTIME:
+            $push_token = TK_CTIME;
             break;
         default:
             $this->scan_default($symbol, $position);
@@ -194,6 +198,7 @@ function token_tostring($token)
     if ($type === TK_CMDBEGIN) return SM_CMDBEGIN;
     if ($type === TK_CMDEND) return SM_CMDEND;
     if ($type === TK_VAR) return SM_VAR;
+    if ($type === TK_CTIME) return SM_CTIME;
 
     return "{any}";
 }
@@ -204,6 +209,7 @@ function token_type_symbol($type)
     if ($type === TK_CMDBEGIN) return "`" . SM_CMDBEGIN . "`";
     if ($type === TK_CMDEND) return "`" . SM_CMDEND . "`";
     if ($type === TK_VAR) return "`" . SM_VAR . "`";
+    if ($type === TK_CTIME) return "`" . SM_CTIME . "`";
 
     return "{unknown}";
 }

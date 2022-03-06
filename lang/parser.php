@@ -4,6 +4,7 @@ namespace Premavaca;
 
 const OP_CMD = 0;
 const OP_ARG = 1;
+const OP_CCMD = 2;
 
 class Command
 {
@@ -40,6 +41,7 @@ class Parser
 
     private $in_block = false;
     private $expect_variable = false;
+    private $push_compile_time = false;
 
     private $allowed_tokens;
 
@@ -50,7 +52,7 @@ class Parser
 
         $this->arguments = [];
 
-        $this->allowed_tokens = [TK_CMDBEGIN];
+        $this->allowed_tokens = [TK_CMDBEGIN, TK_CTIME];
     }
 
     public function get_bytecode()
@@ -81,10 +83,16 @@ class Parser
 
             break;
         case TK_CMDEND:
-            $this->push_command(OP_CMD);
+            if ($this->push_compile_time) {
+                $this->push_command(OP_CCMD);
+                $this->push_compile_time = false;
+            }
+            else
+                $this->push_command(OP_CMD);
+
             $this->in_block = false;
 
-            $this->allowed_tokens = [TK_CMDBEGIN, TK_VALUE, TK_VAR];
+            $this->allowed_tokens = [TK_CMDBEGIN, TK_CTIME, TK_VALUE, TK_VAR];
 
             break;
         case TK_VALUE:
@@ -97,12 +105,17 @@ class Parser
 
             $this->allowed_tokens = $this->in_block
                 ? [TK_CMDEND]
-                : [TK_VAR, TK_VALUE, TK_CMDEND, TK_CMDBEGIN];
+                : [TK_VAR, TK_VALUE, TK_CMDEND, TK_CMDBEGIN, TK_CTIME];
 
             break;
         case TK_VAR:
             $this->expect_variable = true;
             $this->allowed_tokens = [TK_VALUE];
+
+            break;
+        case TK_CTIME:
+            $this->push_compile_time = true;
+            $this->allowed_tokens = [TK_CMDBEGIN];
         }
     }
 
