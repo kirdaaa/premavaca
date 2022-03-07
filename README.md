@@ -110,7 +110,7 @@ premavaca
 [PremavacA] ?; Define label
 premavaca   ?; ID = 0
 ```
-This code will throw an error `undefined label \`0\``, that is because the code executed from top to the bottom and at the time we tried to jump to label 0, it was not yet created.
+This code will throw an error `undefined label '0'`, that is because the code executed from top to the bottom and at the time we tried to jump to label 0, it was not yet created.
 
 The solution to this was implementing high priority callbacks which are executed first and only then normal callbacks are executed, to mark callback as high priority use the `@` operator:
 ```ini
